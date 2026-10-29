@@ -1,0 +1,508 @@
+/* Celá stránka */
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f0f8ff;
+  color: #263238;
+}
+
+h1 {
+  margin-bottom: 10px;
+  color: #263238;
+}
+
+p {
+  font-size: 18px;
+}
+
+/* Priestor s kvetmi pred zatriedením */
+.items {
+  min-height: 100px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: white;
+  border: 2px solid #b0bec5;
+  border-radius: 15px;
+}
+
+/* Všetky presúvateľné predmety */
+.item {
+  cursor: grab;
+  user-select: none;
+}
+
+.item:active {
+  cursor: grabbing;
+}
+
+/* Základný vzhľad kvetov */
+.flower {
+  display: inline-block;
+  width: 65px;
+  height: 65px;
+  margin: 10px;
+  border: 2px solid #37474f;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+/* Modré kvety */
+.flower.blue {
+  background-color: #3498db;
+}
+
+/* Zelené kvety */
+.flower.green {
+  background-color: #2ecc71;
+}
+
+/* Kvety s dvoma modrými a dvoma zelenými časťami */
+.flower.mixed {
+  background: conic-gradient(
+    #3498db 0deg 90deg,
+    #2ecc71 90deg 180deg,
+    #3498db 180deg 270deg,
+    #2ecc71 270deg 360deg
+  );
+}
+
+/* Štvorlupienkový kvet */
+.flower.four {
+  clip-path: polygon(
+    50% 0%,
+    65% 32%,
+    100% 50%,
+    65% 68%,
+    50% 100%,
+    35% 68%,
+    0% 50%,
+    35% 32%
+  );
+}
+
+/* Päťlupienkový kvet */
+.flower.five {
+  clip-path: polygon(
+    50% 0%,
+    62% 31%,
+    95% 29%,
+    70% 53%,
+    81% 88%,
+    50% 70%,
+    19% 88%,
+    30% 53%,
+    5% 29%,
+    38% 31%
+  );
+}
+
+/* Priestor pre Vennov diagram */
+.venn {
+  position: relative;
+  width: 650px;
+  height: 330px;
+  margin: 30px auto 10px;
+}
+
+/* Spoločný vzhľad oboch kruhov */
+.circle {
+  position: absolute;
+  top: 20px;
+  width: 280px;
+  height: 280px;
+  padding: 15px;
+  border: 4px solid #37474f;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+/* Názvy oblastí */
+.circle h3 {
+  position: relative;
+  z-index: 2;
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+/* Ľavý modrý kruh */
+.left {
+  left: 70px;
+  background-color: rgba(52, 152, 219, 0.3);
+  border-color: #1976d2;
+}
+
+/* Pravý zelený kruh */
+.right {
+  left: 300px;
+  background-color: rgba(46, 204, 113, 0.3);
+  border-color: #1b8f4c;
+}
+
+/* Samostatná oblasť prieniku */
+.intersection {
+  position: absolute;
+  z-index: 10;
+
+  top: 20px;
+  left: 250px;
+
+  width: 150px;
+  height: 280px;
+
+  padding: 55px 8px 20px;
+  box-sizing: border-box;
+
+  background-color: rgba(255, 235, 59, 0.8);
+
+  border: none;
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+
+  font-weight: bold;
+}
+
+/* Menšie kvety po vložení do diagramu */
+.circle .flower,
+.intersection .flower {
+  width: 45px;
+  height: 45px;
+  margin: 3px;
+  flex-shrink: 0;
+}
+
+/* Tlačidlo kontroly */
+button {
+  margin-top: 10px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  background-color: #2e7d32;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1b5e20;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* Správa po kontrole */
+#result {
+  min-height: 35px;
+  margin-top: 18px;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+/* Prispôsobenie menšej obrazovke */
+/* Zabráni posúvaniu stránky do strán */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Kvety sa na malej obrazovke zalomia do viacerých riadkov */
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tlačidlá sa prispôsobia menšej obrazovke */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Tablet a menšie obrazovky */
+@media screen and (max-width: 700px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .venn {
+    position: relative;
+    left: 50%;
+    width: 650px;
+    height: 330px;
+    margin-left: -325px;
+    margin-top: 15px;
+    margin-bottom: -20px;
+
+    transform: scale(0.8);
+    transform-origin: top center;
+  }
+
+  .flower {
+    width: 55px;
+    height: 55px;
+    margin: 7px;
+  }
+}
+
+/* Bežný mobil */
+@media screen and (max-width: 520px) {
+  h1 {
+    font-size: 21px;
+  }
+
+  .venn {
+    transform: scale(0.6);
+    margin-bottom: -100px;
+  }
+
+  button {
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+
+  #result {
+    font-size: 18px;
+  }
+
+  #sad-face {
+    font-size: 38px;
+  }
+}
+
+/* Veľmi úzky mobil */
+@media screen and (max-width: 390px) {
+  .venn {
+    transform: scale(0.52);
+    margin-bottom: -125px;
+  }
+
+  .flower {
+    width: 48px;
+    height: 48px;
+    margin: 5px;
+  }
+
+  h1 {
+    font-size: 19px;
+  }
+}
+/* Vrstva s ohňostrojom */
+#celebration {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Jedna farebná čiastočka ohňostroja */
+.firework-particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 8px currentColor;
+
+  animation: firework-explosion 1.2s ease-out forwards;
+}
+
+/* Pohyb čiastočiek od stredu výbuchu */
+@keyframes firework-explosion {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc(-50% + var(--move-x)),
+        calc(-50% + var(--move-y))
+      )
+      scale(1.2);
+  }
+}
+
+/* Smutný smajlík */
+#sad-face {
+  display: none;
+  margin: 10px auto;
+  font-size: 45px;
+  line-height: 1;
+}
+
+/* Zobrazenie a animácia smajlíka */
+#sad-face.show {
+  display: block;
+  animation: sad-face-animation 1.2s ease;
+}
+
+@keyframes sad-face-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.5);
+  }
+
+  35% {
+    opacity: 1;
+    transform: translateY(4px) scale(1.15);
+  }
+
+  60% {
+    transform: translateY(0) scale(1);
+  }
+
+  75% {
+    transform: translateX(-5px);
+  }
+
+  90% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Obmedzenie animácií pre používateľov,
+   ktorí majú vypnutý pohyb */
+@media (prefers-reduced-motion: reduce) {
+  .firework-particle,
+  #sad-face.show {
+    animation-duration: 0.01ms;
+  }
+}
+.volume-control {
+  width: 280px;
+  margin: 15px auto 20px;
+  padding: 12px 18px;
+  background-color: white;
+  border: 2px solid #b0bec5;
+  border-radius: 12px;
+}
+
+.volume-control label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+#volume {
+  width: 100%;
+  cursor: pointer;
+  accent-color: #2e7d32;
+}
+
+#volumeValue {
+  color: #2e7d32;
+}
+/* Zmenšenie celkovej výšky aplikácie */
+
+body {
+  padding: 8px;
+}
+
+h1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 25px;
+}
+
+body > p {
+  margin: 5px 0;
+}
+
+.items {
+  min-height: 70px;
+  margin: 8px auto;
+  padding: 8px;
+}
+
+.flower {
+  width: 52px;
+  height: 52px;
+  margin: 5px;
+}
+
+.venn {
+  height: 280px;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.circle {
+  top: 5px;
+  width: 250px;
+  height: 250px;
+}
+
+.left {
+  left: 85px;
+}
+
+.right {
+  left: 285px;
+}
+
+.intersection {
+  top: 5px;
+  left: 235px;
+  width: 150px;
+  height: 250px;
+}
+
+.circle .flower,
+.intersection .flower {
+  width: 42px;
+  height: 42px;
+  margin: 3px;
+}
+
+.buttons {
+  margin-top: 0;
+}
+
+button {
+  margin-top: 3px;
+  padding: 9px 18px;
+  font-size: 16px;
+}
+
+#result {
+  margin-top: 8px;
+  margin-bottom: 3px;
+  min-height: 25px;
+  font-size: 18px;
+}
