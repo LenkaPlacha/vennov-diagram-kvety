@@ -384,3 +384,27 @@ function resetGame() {
   hideSadFace();
   clearFireworks();
 }
+let selectedFlower = null;
+
+flowers.forEach(function (flower) {
+
+  flower.addEventListener("touchstart", function () {
+    selectedFlower = flower;
+  });
+
+});
+
+document.querySelectorAll(
+  ".circle, #bothArea, .items"
+).forEach(function (area) {
+
+  area.addEventListener("touchend", function () {
+
+    if (selectedFlower) {
+      area.appendChild(selectedFlower);
+      selectedFlower = null;
+    }
+
+  });
+
+});
