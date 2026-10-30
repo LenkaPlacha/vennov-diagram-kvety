@@ -506,3 +506,25 @@ button {
   min-height: 25px;
   font-size: 18px;
 }
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 10px;
+}
+
+.container {
+  max-width: 100%;
+}
+
+button {
+  min-height: 48px;
+  font-size: 18px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
