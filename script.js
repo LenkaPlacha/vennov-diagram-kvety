@@ -384,27 +384,59 @@ function resetGame() {
   hideSadFace();
   clearFireworks();
 }
+/* Mobilné ovládanie - výber kvetu */
 let selectedFlower = null;
 
-flowers.forEach(function (flower) {
+document.querySelectorAll(".item").forEach(function (flower) {
 
-  flower.addEventListener("touchstart", function () {
+  flower.addEventListener("touchstart", function (event) {
+
+    event.preventDefault();
+
     selectedFlower = flower;
+
   });
 
 });
 
-document.querySelectorAll(
-  ".circle, #bothArea, .items"
-).forEach(function (area) {
+/* Presunutie do modrého kruhu */
+document
+  .getElementById("blueArea")
+  .addEventListener("touchend", function (event) {
 
-  area.addEventListener("touchend", function () {
+    event.preventDefault();
 
     if (selectedFlower) {
-      area.appendChild(selectedFlower);
+      this.appendChild(selectedFlower);
       selectedFlower = null;
     }
 
   });
 
-});
+/* Presunutie do zeleného kruhu */
+document
+  .getElementById("greenArea")
+  .addEventListener("touchend", function (event) {
+
+    event.preventDefault();
+
+    if (selectedFlower) {
+      this.appendChild(selectedFlower);
+      selectedFlower = null;
+    }
+
+  });
+
+/* Presunutie do prieniku */
+document
+  .getElementById("bothArea")
+  .addEventListener("touchend", function (event) {
+
+    event.preventDefault();
+
+    if (selectedFlower) {
+      this.appendChild(selectedFlower);
+      selectedFlower = null;
+    }
+
+  });

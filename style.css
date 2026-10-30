@@ -528,3 +528,35 @@ img {
   max-width: 100%;
   height: auto;
 }
+.selected {
+  transform: scale(1.15);
+  box-shadow: 0 0 15px #ff9800;
+  border: 3px solid #ff9800;
+}
+@media (max-width: 768px) {
+
+  .venn {
+    transform: scale(0.8);
+    transform-origin: top center;
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .item {
+    width: 70px;
+    height: 70px;
+  }
+
+  button {
+    min-height: 50px;
+    font-size: 18px;
+  }
+}
+.selected {
+  outline: 4px solid orange;
+  transform: scale(1.15);
+}
