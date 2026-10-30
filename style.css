@@ -129,15 +129,33 @@ p {
 /* Ľavý modrý kruh */
 .left {
   left: 70px;
-  background-color: rgba(52, 152, 219, 0.3);
-  border-color: #1976d2;
+  background: radial-gradient(
+    circle,
+    rgba(52,152,219,0.15) 0%,
+    rgba(52,152,219,0.35) 100%
+  );
+
+  border: 5px solid #1976d2;
+
+  box-shadow:
+    0 0 20px rgba(25,118,210,0.3),
+    inset 0 0 20px rgba(255,255,255,0.4);
 }
 
-/* Pravý zelený kruh */
 .right {
   left: 300px;
-  background-color: rgba(46, 204, 113, 0.3);
-  border-color: #1b8f4c;
+
+  background: radial-gradient(
+    circle,
+    rgba(46,204,113,0.15) 0%,
+    rgba(46,204,113,0.35) 100%
+  );
+
+  border: 5px solid #1b8f4c;
+
+  box-shadow:
+    0 0 20px rgba(27,143,76,0.3),
+    inset 0 0 20px rgba(255,255,255,0.4);
 }
 
 /* Samostatná oblasť prieniku */
@@ -146,27 +164,36 @@ p {
   z-index: 10;
 
   top: 20px;
-  left: 250px;
+  left: 285px;
 
-  width: 150px;
+  width: 20px;
   height: 280px;
 
-  padding: 55px 8px 20px;
+  padding: 60px 6px 20px;
+border-radius: 70%
   box-sizing: border-box;
 
-  background-color: rgba(255, 235, 59, 0.8);
+ background:
+  repeating-linear-gradient(
+    45deg,
+    rgba(52, 152, 219, 0.75) 0px,
+    rgba(52, 152, 219, 0.75) 12px,
+    rgba(46, 204, 113, 0.75) 12px,
+    rgba(46, 204, 113, 0.75) 24px
+  );
 
-  border: none;
+  border: 3px solid rgba(0, 0, 0, 0.15);
   border-radius: 50%;
 
   overflow: hidden;
 
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
-  align-items: center;
   justify-content: center;
-  gap: 3px;
+  align-items: center;
+  align-content: center;
+
+  gap: 5px;
 
   font-weight: bold;
 }
@@ -559,4 +586,11 @@ img {
 .selected {
   outline: 4px solid orange;
   transform: scale(1.15);
+}
+.circle {
+  transition: all 0.3s ease;
+}
+
+.circle:hover {
+  transform: scale(1.03);
 }
